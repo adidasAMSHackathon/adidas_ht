@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Adidas - Frontend</title>
+        <!-- Bootstrap core CSS-->
+        <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom fonts for this template-->
+        <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" type="text/css">
+        <!-- Custom styles for this template-->
+        <link href="/static/css/sb-admin.css" rel="stylesheet">
+    </head>
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <a class="navbar-brand" href="index.html">Adidas</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                        <a class="nav-link" href="/">
+                            <i class="fa fa-fw fa-chart-line"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sports">
+                        <a class="nav-link">
+                            <i class="fa fa-fw fa-dumbbell"></i>
+                            <span class="nav-link-text">Sports</span>
+                        </a>
+                        <ul class="sidenav-second-level show" id="collapseSports">
+                            <li>
+                                <a href="{{ url_for('running.index') }}">
+                                    <i class="fa fa-fw fa-walking"></i>
+                                    <span class="nav-link-text">Running</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="fencing.html">
+                                    <i class="fab fa-servicestack"></i>
+                                    <span class="nav-link-text">Fencing</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="golf.html">
+                                    <i class="fa fa-fw fa-golf-ball"></i>
+                                    <span class="nav-link-text">Golf</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="basketball.html">
+                                    <i class="fa fa-fw fa-basketball-ball"></i>
+                                    <span class="nav-link-text">Basketball</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                            <i class="fa fa-fw fa-angle-left"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Search for...">
+                                <span class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Charts</li>
+                </ol>
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card o-hidden h-100">
+                            <a class="card-footer clearfix" href="{{ url_for('running.index') }}">
+                                <span class="float-left"><b>Tread stability</b></span>
+                            </a>
+                            <div class="card-body">
+                                <div class="mr-5 text-muted"><b id="tread_stability">{{ tread_stability }}</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card o-hidden h-100">
+                            <a class="card-footer clearfix" href="{{ url_for('running.index') }}">
+                                <span class="float-left"><b>ROM consistency</b></span>
+                            </a>
+                            <div class="card-body">
+                                <div class="mr-5 text-muted"><b id="rom_consistency">{{ rom_consistency }}</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card o-hidden h-100">
+                            <a class="card-footer clearfix" href="{{ url_for('running.index') }}">
+                                <span class="float-left"><b>Step width consistency</b></span>
+                            </a>
+                            <div class="card-body">
+                                <div class="mr-5 text-muted"><b id="step_width_consistency">{{ step_width_consistency }}</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card o-hidden h-100">
+                            <a class="card-footer clearfix" href="{{ url_for('running.index') }}">
+                                <span class="float-left"><b>Cyclical consistency</b></span>
+                            </a>
+                            <div class="card-body">
+                                <div class="mr-5 text-muted"><b id="cyclical_consistency">{{ cyclical_consistency }}</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                            <i class="fa fa-area-chart"></i> Your analysis</div>
+                            <div class="card-body">
+                                <canvas id="analysis_chart" width="100%" height="30"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Columns Example Social Feed-->
+                    <div class="mb-0 mt-4"><i class="fa fa-newspaper-o"></i> Your recommendations</div>
+                    <hr class="mt-2">
+                    <div class="card-columns">
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://www.adidas.de/dis/dw/image/v2/aagl_prd/on/demandware.static/-/Sites-adidas-products/default/dw4c7212f0/zoom/CQ0777_01_standard.jpg?sh=512&strip=false&sw=512" alt="">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title mb-1"><a href="#">ALPHABOUNCE SPACE DYE</a></h6>
+                                <p class="card-text small">POWER RUN
+                                    <a href="#">#pursueYourGoal</a>
+                                </p>
+                            </div>
+                            <hr class="my-0">
+                            <div class="card-body py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-shopping-cart"></i>Buy</a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
+                                <a class="d-inline-block" href="#">
+                                <i class="fa fa-fw fa-share"></i>Share</a>
+                            </div>
+                        </div>
+                        <!-- Example Social Card-->
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=281" alt="">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title mb-1"><a href="#">Shoe 2</a></h6>
+                                <p class="card-text small">DYNAMIC RUN
+                                    <a href="#">#holdmybeer</a>
+                                    <a href="#">#igotthis</a>
+                                </p>
+                            </div>
+                            <hr class="my-0">
+                            <div class="card-body py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-shopping-cart"></i>Buy</a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
+                                <a class="d-inline-block" href="#">
+                                <i class="fa fa-fw fa-share"></i>Share</a>
+                            </div>
+                        </div>
+                        <!-- Example Social Card-->
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://www.adidas.de/dis/dw/image/v2/aagl_prd/on/demandware.static/-/Sites-adidas-products/default/dwd1d95117/zoom/AC8273_01_standard.jpg?sh=512&strip=false&sw=512" alt="">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title mb-1"><a href="#">ALPHABOUNCE BEYOND</a></h6>
+                                <p class="card-text small">POWER RUN
+                                    <a href="#">#fasterThanTheCompetition</a>
+                                </p>
+                            </div>
+                            <hr class="my-0">
+                            <div class="card-body py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-shopping-cart"></i>Buy</a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
+                                <a class="d-inline-block" href="#">
+                                <i class="fa fa-fw fa-share"></i>Share</a>
+                            </div>
+                        </div>
+                        <!-- Example Social Card-->
+                        <div class="card mb-3">
+                            <a href="#">
+                                <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=185" alt="">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title mb-1"><a href="#">Shoe 4</a></h6>
+                                <p class="card-text small">LONG RUN
+                                    <a href="#">#desert</a>
+                                    <a href="#">#water</a>
+                                </p>
+                            </div>
+                            <hr class="my-0">
+                            <div class="card-body py-2 small">
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-shopping-cart"></i>Buy</a>
+                                <a class="mr-3 d-inline-block" href="#">
+                                <i class="fa fa-fw fa-thumbs-up"></i>Like</a>
+                                <a class="d-inline-block" href="#">
+                                <i class="fa fa-fw fa-share"></i>Share</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Card Columns-->
+                </div>
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Adidas</small>
+                    </div>
+                </div>
+            </footer>
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+            <!-- Bootstrap core JavaScript-->
+            <script src="/static/vendor/jquery/jquery.min.js"></script>
+            <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Page level plugin JavaScript-->
+            <script src="/static/vendor/chart.js/Chart.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="/static/js/sb-admin.min.js"></script>
+            <!-- Custom scripts for this page-->
+            <script src="/static/js/sb-admin-charts.js"></script>
+
+            <script>
+                var ctx = document.getElementById("analysis_chart");
+                var chart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: {{ analysis_chart_labels }},
+                    datasets: [{
+                      label: "Yours",
+                      lineTension: 0.3,
+                      fill: false,
+                      borderColor: '#dc3545',
+                      pointRadius: 0,
+                      data: {{ analysis_chart_data }},
+                    },
+                    {
+                      label: "Optimum",
+                      lineTension: 0.3,
+                      fill: false,
+                      borderColor: '#28a745',
+                      pointRadius: 0,
+                      data: {{ analysis_chart_data2 }},
+                    }],
+                  },
+                  options: {
+                    scales: {
+                      xAxes: [{
+                        gridLines: {
+                          display: false
+                        },
+                        ticks: {
+                          maxTicksLimit: 7,
+                          display: false
+                        }
+                      }],
+                      yAxes: [{
+                        ticks: {
+                          min: -4,
+                          max: 4,
+                          maxTicksLimit: 5,
+                          display: false
+                        },
+                        gridLines: {
+                          color: "rgba(0, 0, 0, .125)",
+                        }
+                      }],
+                    },
+                    legend: {
+                      display: true
+                    }
+                  }
+                });
+            </script>
+        </div>
+    </body>
+</html>
